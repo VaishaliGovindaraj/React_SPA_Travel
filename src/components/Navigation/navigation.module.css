@@ -1,0 +1,11 @@
+.nav_menu{
+    display: flex;
+    justify-content: space-around;
+    background-color: aqua;
+    padding: 16px;
+    font-size: 1.5rem;
+}
+
+.nav_item{
+    color: blue;
+}

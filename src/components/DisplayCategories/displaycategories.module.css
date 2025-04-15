@@ -1,0 +1,10 @@
+.category_wrapper{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+}
+
+.category_item{
+    background-color: rgb(209, 156, 156);
+    padding: 16px;
+}
