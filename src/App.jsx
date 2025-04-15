@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import CityDetails from "./components/CityDetails";
 import DisplayCategories from "./components/DisplayCategories";
 import Navigation from '../src/components/Navigation'
+import Footer from "./components/Footer";
 
 function App() {
   const API_KEY = "64fe9596d08e483c84d60f8bd0f9b241";
@@ -101,18 +102,21 @@ function App() {
           <label for="fname">City you want to travel </label>
           <input type="text" id="fname" name="fname" placeholder="enter city name" onChange={HandleInput}></input> <br></br>
           {placeName && <button onClick={HandleSearch} >Enter</button>}
-        </div>
+        
 
       {displayCategory && <DisplayCategories chosenCategory={setCategoryChosed} />}
       {displayCategory &&  placeDetails.length === 0 && !errorDiv && !notAvailable && <div> Please choose a category </div>}
       {searched && errorDiv && <div> Please search a valid Country</div>}
       
-
+      <div className="placedetails_wrapper_div">
       {placeDetails
         .filter(item => item.name && item.name.trim() !== "")
-        .map((place) => <CityDetails place={place} />)}
+        .map((place) =>  <CityDetails place={place} /> )}
+        </div>
 
-      {notAvailable &&  placeDetails.length === 0 && <div> We culn't find any result in this category</div>} </>}
+      {notAvailable &&  placeDetails.length === 0 && <div> We culn't find any result in this category</div>} </div> </>}
+      
+      <Footer /> 
     </>
   )
 }
