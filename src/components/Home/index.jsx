@@ -1,14 +1,13 @@
+import styles from './home.module.css'
+import MainContent from '../MainContentArea/index.jsx'
 
 
 
 const Home = () => {
     return(
-        <>
-       <div>
-        <h1> Nomad Nest</h1>
-       </div>
-
-        </>
+        <div className= {styles.home_wrapper}>
+        <MainContent/>
+        </div>
     )
 
 }

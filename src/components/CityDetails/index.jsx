@@ -7,7 +7,7 @@ const CityDetails = ({ place }) => {
   const setImage = async () => {
     try {
       // Build the search query using both name and category.
-      const query = `${place.name}`;
+      const query = `${place.name}${place.city}`;
       const response = await fetch(`https://api.pexels.com/v1/search?query=${place.name}&per_page=1`, {
         headers: {
           Authorization: "xu9dmagbc2xMyCaNoiQmfUHYQ2wOT3hbqWQW2Ghb4vCXa2upsuw035En"  // Replace with your actual Pexels API key.
