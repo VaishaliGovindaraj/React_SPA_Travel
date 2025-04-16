@@ -17,3 +17,24 @@
 .inactive{
     text-decoration: none;
 }
+
+@media screen and (max-width: 700px){
+    .category_wrapper{
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        align-items: center;
+    }
+
+    .category_item{
+        background-color:  #7a4fa1;
+        color: white;
+        padding: 16px;
+        margin-bottom: 4px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;    }
+}

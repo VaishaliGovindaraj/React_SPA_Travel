@@ -23,7 +23,7 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 700px){
     .nav_menu{
         display: flex;
         flex-direction: column;
@@ -40,5 +40,6 @@
         text-align: center;
         padding: 8px;
         cursor: pointer;
+        margin-bottom : 8px;
     }
 }

@@ -21,6 +21,7 @@ function App() {
   const [errorDiv, setErrorDiv] = useState(false); //Error Message to user
   const [searched, setsearched] = useState(false);
   const [notAvailable, setNotAvailable] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   const HandleInput = (e) => {
@@ -33,6 +34,7 @@ function App() {
     setsearched(false);
     setNotAvailable(false);
     setActivePage(null)
+    setLoading(false)
   }
 
   const HandleSearch = async () => {
@@ -66,6 +68,7 @@ function App() {
     setsearched(false);
     setNotAvailable(false);
     setActivePage(null)
+    setLoading(false);
   }
 
   const handleClick = (item) => {
@@ -75,6 +78,7 @@ function App() {
 
   const getItinerary = async () => {
     try {
+      setLoading(true);
       const idPlace = placeId.map(item => item.placeIDDetail);
       { console.log(idPlace) }
       const response = await fetch(
@@ -96,6 +100,8 @@ function App() {
       setErrorDiv(false);
     } catch (error) {
       console.log("Error fetching itinerary:", error);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -136,15 +142,17 @@ function App() {
 
             {displayCategory && <DisplayCategories chosenCategory={handleClick} currentPage={activePage}/>}
             {displayCategory && placeDetails.length === 0 && !errorDiv && !notAvailable && <div className="text_message"> Please choose a category from above listed categories</div>}
-            {searched && errorDiv && <div className="text_message">  Sorry. We couln't find any result in this category </div>}
-
+            {searched && errorDiv && (<div className="text_message">Sorry, we couldn't find the country</div>)}
+            {searched && notAvailable && !errorDiv && (<div className="text_message">Sorry, we couldn't find in the required category</div>)}
+            {loading && !notAvailable && !errorDiv && <div className="loading_text_message">   <div className="spinner"></div> <p>Fetching places for this category...</p></div>}
             <div className="placedetails_wrapper_div">
               {placeDetails
                 .filter(item => item.name && item.name.trim() !== "")
-                .map((place) => <CityDetails place={place} />)}
+                .map((place,index) => <CityDetails place={place} key={index} />)}
             </div>
-
-            {notAvailable && placeDetails.length === 0 && <div className="text_message"> Sorry. We couln't find any result in this category</div>} </div> </>}
+              
+            
+            </div> </>}
 
       {selectedPage === "Aboutus" && <Aboutus />}
       <Footer />
