@@ -51,7 +51,7 @@ function App() {
       setPlaceId(placeIdDetials);
       setDisplayCategory(true);
       setsearched(true);
-      console.log(placeIdDetials);
+      
     }
     catch (error) {
       console.log("Error fetching itinerary:", error);
@@ -80,7 +80,7 @@ function App() {
     try {
       setLoading(true);
       const idPlace = placeId.map(item => item.placeIDDetail);
-      { console.log(idPlace) }
+      
       const response = await fetch(
         `https://api.geoapify.com/v2/places?categories=${categoryChosed}&filter=place:${idPlace}&limit=50&apiKey=${API_KEY}`
       );
