@@ -3,10 +3,11 @@ import MainContent from '../MainContentArea/index.jsx'
 
 
 
-const Home = () => {
-    return(
-        <div className= {styles.home_wrapper}>
-        <MainContent/>
+const Home = ({selectedPage}) => {
+    return (
+        <div className={styles.home_wrapper}>
+            <MainContent assignPage={selectedPage} />
+            
         </div>
     )
 

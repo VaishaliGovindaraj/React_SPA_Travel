@@ -5,6 +5,15 @@
 }
 
 .category_item{
-    background-color: rgb(209, 156, 156);
+    background-color:  #7a4fa1;
+    color: white;
     padding: 16px;
+}
+
+.active{
+    background-color: #e76e51;
+}
+
+.inactive{
+    text-decoration: none;
 }

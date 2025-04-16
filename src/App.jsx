@@ -4,6 +4,7 @@ import CityDetails from "./components/CityDetails";
 import DisplayCategories from "./components/DisplayCategories";
 import Navigation from '../src/components/Navigation'
 import Footer from "./components/Footer";
+import Aboutus from "./components/AboutUs";
 
 function App() {
   const API_KEY = "64fe9596d08e483c84d60f8bd0f9b241";
@@ -11,6 +12,7 @@ function App() {
   const CATEGORIES = "tourism.sights,natural.beach,entertainment.museum";
 
   const [selectedPage, setSelectedPage] = useState("Home"); // Page Navigation State
+  const [activePage, setActivePage] = useState(null); //determine the active Page
   const [placeName, setPlaceName] = useState(""); //sets the place Name from the input text
   const [placeId, setPlaceId] = useState([]); // fetches placeid using the entered text
   const [placeDetails, setPlaceDetails] = useState([]); // fetches the list of places from the chosen place id
@@ -30,6 +32,7 @@ function App() {
     setErrorDiv(false);
     setsearched(false);
     setNotAvailable(false);
+    setActivePage(null)
   }
 
   const HandleSearch = async () => {
@@ -53,6 +56,23 @@ function App() {
     }
   }
 
+  const assignPage = (item) => {
+    setSelectedPage(item);
+    setCategoryChosed(null);
+    setPlaceId([]);
+    setPlaceDetails([]);
+    setDisplayCategory(false);
+    setErrorDiv(false);
+    setsearched(false);
+    setNotAvailable(false);
+    setActivePage(null)
+  }
+
+  const handleClick = (item) => {
+    setCategoryChosed(item);
+    setActivePage(item);
+  }
+
   const getItinerary = async () => {
     try {
       const idPlace = placeId.map(item => item.placeIDDetail);
@@ -62,7 +82,7 @@ function App() {
       );
 
       const result = await response.json();
-      if(result.features.length === 0){
+      if (result.features.length === 0) {
         setNotAvailable(true);
       }
       const places = result.features.map(feature => ({
@@ -80,43 +100,54 @@ function App() {
   };
 
   useEffect(() => {
-    if(searched){
-    if (placeId.length > 0 && categoryChosed !== null){
-      getItinerary();
-    } else if(placeId.length === 0){
-      setErrorDiv(true);
+    if (searched) {
+      if (placeId.length > 0 && categoryChosed !== null) {
+        getItinerary();
+      } else if (placeId.length === 0) {
+        setErrorDiv(true);
+      }
     }
-  }
-  }, [placeId, categoryChosed,searched])
+  }, [placeId, categoryChosed, searched])
 
   return (
     <>
-      <Navigation selectedPage={setSelectedPage} />
+      <Navigation selectedPage={assignPage} />
 
-      {selectedPage === "Home" && <Home />}
+      {selectedPage === "Home" && <Home selectedPage={assignPage}/>}
 
-      {selectedPage === "ExplorePlaces" 
-      &&
-      <>
-        <div className="explore_places_div">
-          <label for="fname">City you want to travel </label>
-          <input type="text" id="fname" name="fname" placeholder="enter city name" onChange={HandleInput}></input> <br></br>
-          {placeName && <button onClick={HandleSearch} >Enter</button>}
-        
+      {selectedPage === "ExplorePlaces"
+        &&
+        <>
+          <div className="explore_places_div">
+            <div className="city_input_wrapper">
+              <label htmlFor="fname">City you want to travel</label>
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                placeholder="Enter city name"
+                onChange={HandleInput}
+              />
+              {placeName && (
+                <button onClick={HandleSearch}>Enter</button>
+              )}
+            </div>
 
-      {displayCategory && <DisplayCategories chosenCategory={setCategoryChosed} />}
-      {displayCategory &&  placeDetails.length === 0 && !errorDiv && !notAvailable && <div> Please choose a category </div>}
-      {searched && errorDiv && <div> Please search a valid Country</div>}
-      
-      <div className="placedetails_wrapper_div">
-      {placeDetails
-        .filter(item => item.name && item.name.trim() !== "")
-        .map((place) =>  <CityDetails place={place} /> )}
-        </div>
 
-      {notAvailable &&  placeDetails.length === 0 && <div> We culn't find any result in this category</div>} </div> </>}
-      
-      <Footer /> 
+            {displayCategory && <DisplayCategories chosenCategory={handleClick} currentPage={activePage}/>}
+            {displayCategory && placeDetails.length === 0 && !errorDiv && !notAvailable && <div className="text_message"> Please choose a category from above listed categories</div>}
+            {searched && errorDiv && <div className="text_message">  Sorry. We couln't find any result in this category </div>}
+
+            <div className="placedetails_wrapper_div">
+              {placeDetails
+                .filter(item => item.name && item.name.trim() !== "")
+                .map((place) => <CityDetails place={place} />)}
+            </div>
+
+            {notAvailable && placeDetails.length === 0 && <div className="text_message"> Sorry. We couln't find any result in this category</div>} </div> </>}
+
+      {selectedPage === "Aboutus" && <Aboutus />}
+      <Footer />
     </>
   )
 }

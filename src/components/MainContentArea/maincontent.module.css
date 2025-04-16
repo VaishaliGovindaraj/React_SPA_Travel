@@ -62,28 +62,31 @@
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
+    padding: 8px;
 }
 
   button {
-    background-color: #007bff;
+    background-color: #ff8566;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 0.75rem 1.5rem;
+    padding: 8px;
+    margin: 8px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
 
   button:hover {
-    background-color: #ebdc9a;
+    background-color: #e7ce5d;
   }
 
 .envelope_title{
     display: flex;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
+    padding: 16px;
 }
 
 input[type="text"] {
@@ -95,8 +98,10 @@ input[type="text"] {
 
 .input_field_div{
     display: flex;
-    width:100%;
+    flex-direction: column;
+    width:60%;
     justify-content: center;
+    margin-left: 32px;
     padding: 8px;
 }
 
@@ -116,10 +121,38 @@ input[type="text"] {
 
 .pattern_text_div h4{
     color: black;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 8px;
 }
 
+
+.travel_intro_section {
+    background-color: #fff7f2;
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .travel_intro_content {
+    max-width: 800px;
+    text-align: center;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .travel_intro_content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #3a06f8;
+  }
+  
+  .travel_intro_content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  
+  
 .videoContainer{
     display: none;
 }

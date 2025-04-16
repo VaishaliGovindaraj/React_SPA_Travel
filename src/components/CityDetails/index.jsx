@@ -32,7 +32,6 @@ const CityDetails = ({ place }) => {
       <h4>{place.name}</h4>
       <img src={imageUrl} alt={place.name} />
       <p>{place.city}</p>
-      <h6>{place.category}</h6>
       <p>{place.address}</p>
       <p>{place.coordinates}</p>
     </div>

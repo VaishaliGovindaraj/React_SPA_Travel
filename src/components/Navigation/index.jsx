@@ -6,8 +6,8 @@ const Navigation = ({selectedPage}) => {
         <h1 className={styles.header_title}>Nomad Nest</h1>
         <div className={styles.nav_menu}>
             <p className={styles.nav_item} onClick={() => selectedPage("Home")}>Home</p>
-            <p className={styles.nav_item} onClick={() => selectedPage("ExplorePlaces")} >Places to Explore</p>
-            <p className={styles.nav_item} onClick={() => selectedPage("ImageGallery")} >Image Gallery</p>
+            <p className={styles.nav_item} onClick={() => selectedPage("ExplorePlaces")} > Explore Places </p>
+            <p className={styles.nav_item} onClick={() => selectedPage("Aboutus")} >About Us</p>
         </div>
         </>
     )

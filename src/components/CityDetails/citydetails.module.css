@@ -1,6 +1,36 @@
-.visitplace_div{
-    padding: 16px;
-    background-color: gray;
-    margin: 8px;
+.visitplace_div {
+    background-color: white;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
+    transition: transform 0.3s ease;
+    width: 80%;
+    flex: 1 1 280px;          
+    max-width: 320px;  
+  }
+  
+  .visitplace_div:hover {
+    transform: translateY(-5px);
+  }
+  
+  .visitplace_div img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .visitplace_div h4 {
+    color: #2e8b57;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .visitplace_div p {
+    margin: 0.2rem 0;
+    color: #555;
+  }
+  
