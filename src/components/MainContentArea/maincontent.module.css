@@ -215,6 +215,26 @@ input[type="text"] {
         font-weight: bold;
         text-align: center;
     }
+    .input_field_div{
+        display: flex;
+        flex-direction: column;
+        width:30%;
+        margin: auto;
+        padding: 8px;
+    }
+
+    .envelope_header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        font-weight: bold;
+        padding: 8px;
+    }
+
+    .envelope_title{
+        font-size: 1.5rem;
+    }
 
     .country_imageTile{
         display: flex;
