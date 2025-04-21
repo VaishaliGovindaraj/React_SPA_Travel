@@ -155,7 +155,7 @@ function App() {
             </div> </>}
 
       {selectedPage === "Aboutus" && <Aboutus />}
-      <Footer />
+      <Footer selectedPage={assignPage}/>
     </>
   )
 }

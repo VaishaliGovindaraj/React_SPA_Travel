@@ -17,7 +17,7 @@ const MainContent = ({assignPage}) => {
     return (
         <div className={styles.main_content_area}>
             <div className={styles.image_div}>
-                <SimpleImageSlider width={"100%"} height={"100%"} images={images} showBullets={false} showNavs={false} slideDuration={0.25} autoPlay={true} />
+                <SimpleImageSlider width={"100%"} height={"100%"} images={images} showBullets={false} showNavs={false} slideDuration={0.35} autoPlay={true} />
                 <div className={styles.text_div}>Live the Journey, Love the Nest - NomadNest</div>
             </div>
             {/* <div className={styles.country_imageTile}>
